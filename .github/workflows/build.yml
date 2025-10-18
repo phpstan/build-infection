@@ -104,7 +104,7 @@ jobs:
       - name: "Install PHP"
         uses: "shivammathur/setup-php@v2"
         with:
-          coverage: "none"
+          coverage: "xdebug"
           php-version: "${{ matrix.php-version }}"
           ini-file: development
           extensions: "mongodb"
