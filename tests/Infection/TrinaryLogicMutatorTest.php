@@ -64,6 +64,22 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 				PHP
 ,
 		];
+
+		yield 'It mutates IsSuperTypeOfResult yes' => [
+			<<<'PHP'
+				<?php
+				$trinary = \PHPStan\Type\IsSuperTypeOfResult::createYes();
+				$trinary->yes();
+				PHP
+,
+			<<<'PHP'
+				<?php
+
+				$trinary = \PHPStan\Type\IsSuperTypeOfResult::createYes();
+				!$trinary->no();
+				PHP
+,
+		];
 	}
 
 	protected function getTestedMutatorClassName(): string
