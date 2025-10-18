@@ -56,7 +56,7 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 ,
 		];
 
-		yield 'It mutates skips maybe' => [
+		yield 'It skips maybe' => [
 			<<<'PHP'
 				<?php
 				$trinary = \PHPStan\TrinaryLogic::createYes();
