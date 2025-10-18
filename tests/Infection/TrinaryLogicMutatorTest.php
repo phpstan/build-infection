@@ -14,7 +14,7 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 	 * @param string|string[] $expected
 	 */
 	#[DataProvider('mutationsProvider')]
-	public function test_it_can_mutate(string $input, $expected = []): void
+	public function testMutator(string $input, $expected = []): void
 	{
 		$this->assertMutatesInput($input, $expected);
 	}
@@ -26,42 +26,42 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 	{
 		yield 'It mutates trinary yes' => [
 			<<<'PHP'
-                <?php
-                $trinary = \PHPStan\TrinaryLogic::createYes();
-                $trinary->yes();
-                PHP
+				<?php
+				$trinary = \PHPStan\TrinaryLogic::createYes();
+				$trinary->yes();
+				PHP
 ,
 			<<<'PHP'
-                <?php
+				<?php
 
-                $trinary = \PHPStan\TrinaryLogic::createYes();
-                !$trinary->no();
-                PHP
+				$trinary = \PHPStan\TrinaryLogic::createYes();
+				!$trinary->no();
+				PHP
 ,
 		];
 
 		yield 'It mutates trinary no' => [
 			<<<'PHP'
-                <?php
-                $trinary = \PHPStan\TrinaryLogic::createYes();
-                $trinary->no();
-                PHP
+				<?php
+				$trinary = \PHPStan\TrinaryLogic::createYes();
+				$trinary->no();
+				PHP
 ,
 			<<<'PHP'
-                <?php
+				<?php
 
-                $trinary = \PHPStan\TrinaryLogic::createYes();
-                !$trinary->yes();
-                PHP
+				$trinary = \PHPStan\TrinaryLogic::createYes();
+				!$trinary->yes();
+				PHP
 ,
 		];
 
 		yield 'It mutates skips maybe' => [
 			<<<'PHP'
-                <?php
-                $trinary = \PHPStan\TrinaryLogic::createYes();
-                $trinary->maybe();
-                PHP
+				<?php
+				$trinary = \PHPStan\TrinaryLogic::createYes();
+				$trinary->maybe();
+				PHP
 ,
 		];
 	}
