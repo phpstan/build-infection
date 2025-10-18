@@ -1,6 +1,6 @@
 {
 	"name": "phpstan/build-infection",
-	"description": "Infection extensions for PHPStan",
+	"description": "Infection mutators for PHPStan",
 	"license": [
 		"MIT"
 	],
