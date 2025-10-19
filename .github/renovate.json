@@ -1,17 +1,21 @@
 {
   "extends": [
-    "config:base",
+    "config:recommended",
     "schedule:weekly"
   ],
   "rangeStrategy": "update-lockfile",
   "packageRules": [
     {
-      "matchPaths": ["+(composer.json)"],
+      "matchFileNames": [
+        "+(composer.json)"
+      ],
       "enabled": true,
       "groupName": "root-composer"
     },
     {
-      "matchPaths": [".github/**"],
+      "matchFileNames": [
+        ".github/**"
+      ],
       "enabled": true,
       "groupName": "github-actions"
     }
