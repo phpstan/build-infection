@@ -71,7 +71,6 @@ jobs:
 
       - name: "Determine default branch"
         id: default-branch
-        working-directory: phpstan-dist
         run: |
           echo "name=$(basename $(git rev-parse --abbrev-ref origin/HEAD))" >> $GITHUB_OUTPUT
 
