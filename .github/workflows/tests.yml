@@ -60,8 +60,11 @@ jobs:
       - name: "Install dependencies"
         run: "composer install --no-interaction --no-progress"
 
-      - name: "Configure mutators"
-        run: cp build-infection/resources/infection.json5 .
+      - name: "Configure infection"
+        run: |
+          php build-infection/bin/infection-config.php \
+          > infection.json5
+          cat infection.json5 | jq
 
       - name: "Cache Result cache"
         uses: actions/cache@v4
