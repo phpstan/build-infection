@@ -71,14 +71,8 @@ jobs:
           restore-keys: |
             result-cache-v1-${{ matrix.extension-name }}-
 
-      - name: "Determine default branch"
-        id: default-branch
-        run: |
-          echo "name=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')" >> $GITHUB_OUTPUT
-
       - name: "Run infection"
         run: |
-          git fetch --depth=1 origin ${{ steps.default-branch.outputs.name }}
           infection \
             --ignore-msi-with-no-mutations \
             --min-msi=100 \
