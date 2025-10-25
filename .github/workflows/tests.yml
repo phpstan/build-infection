@@ -72,7 +72,7 @@ jobs:
       - name: "Determine default branch"
         id: default-branch
         run: |
-          echo "name=$(git remote show [your_remote] | sed -n '/HEAD branch/s/.*: //p'))" >> $GITHUB_OUTPUT
+          echo "name=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p'))" >> $GITHUB_OUTPUT
 
       - name: "Run infection"
         run: |
