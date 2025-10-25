@@ -68,11 +68,17 @@ jobs:
           restore-keys: |
             result-cache-v1-${{ matrix.extension-name }}-
 
+      - name: "Determine default branch"
+        id: default-branch
+        working-directory: phpstan-dist
+        run: |
+          echo "name=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')" >> $GITHUB_OUTPUT
+
       - name: "Run infection"
         run: |
-          git fetch --depth=1 origin $GITHUB_BASE_REF
+          git fetch --depth=1 origin ${{ steps.previous-commit.outputs.name }}
           infection \
-            --git-diff-base=origin/$GITHUB_BASE_REF \
+            --git-diff-base=origin/${{ steps.previous-commit.outputs.name }} \
             --git-diff-lines \
             --ignore-msi-with-no-mutations \
             --min-msi=100 \
