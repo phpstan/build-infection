@@ -11,7 +11,8 @@
     "text": "tmp/infection.log"
   },
   "mutators": {
-    "@default": false
+    "@default": false,
+    "PHPStan\\Infection\\TrinaryLogicMutator": true
   },
   "bootstrap": "build-infection/vendor/autoload.php"
 }
