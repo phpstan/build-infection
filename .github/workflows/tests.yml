@@ -78,7 +78,6 @@ jobs:
         run: |
           git fetch --depth=1 origin ${{ steps.default-branch.outputs.name }}
           infection \
-            --git-diff-base=origin/${{ steps.default-branch.outputs.name }} \
             --ignore-msi-with-no-mutations \
             --min-msi=100 \
             --min-covered-msi=100 \
