@@ -1,6 +1,9 @@
 #!/usr/bin/env php
 <?php declare(strict_types = 1);
 
+error_reporting(E_ALL & ~E_DEPRECATED);
+ini_set('display_errors', 'stderr');
+
 $opts = getopt('', ['mutator-class:']);
 if (!$opts) {
 	echo "Usage: php ". $argv[0] ." --mutator-class='Infection\Mutator\Removal\MethodCallRemoval'\n";
