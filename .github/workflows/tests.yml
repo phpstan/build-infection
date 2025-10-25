@@ -24,7 +24,6 @@ jobs:
       matrix:
         extension-name:
           - "phpstan-doctrine"
-          - "extension-installer"
           - "phpstan-phpunit"
           - "phpstan-mockery"
           - "phpstan-symfony"
@@ -54,8 +53,11 @@ jobs:
           php-version: "8.3"
           tools: "infection:0.31.7"
 
-      - name: "Install dependencies"
+      - name: "Install build-infection dependencies"
         working-directory: "build-infection"
+        run: "composer install --no-interaction --no-progress"
+
+      - name: "Install dependencies"
         run: "composer install --no-interaction --no-progress"
 
       - name: "Configure mutators"
