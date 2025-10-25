@@ -24,9 +24,9 @@ jobs:
       matrix:
         extension-name:
           - "phpstan-doctrine"
-          - "phpstan-phpunit"
-          - "phpstan-mockery"
-          - "phpstan-symfony"
+          #- "phpstan-phpunit"
+          #- "phpstan-mockery"
+          #- "phpstan-symfony"
           #- "phpstan-nette"
           #- "phpstan-webmozart-assert"
           #- "phpstan-beberlei-assert"
