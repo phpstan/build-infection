@@ -11,7 +11,7 @@ if (!$opts) {
 }
 
 $decoded = json_decode(file_get_contents(__DIR__.'/../resources/infection.json5'));
-foreach($opts['mutator-class'] as $mutatorclass) {
+foreach((array)$opts['mutator-class'] as $mutatorclass) {
 	$decoded->mutators->$mutatorclass = true;
 }
 
