@@ -12,5 +12,6 @@
   },
   "mutators": {
     "@default": false
-  }
+  },
+  "bootstrap": "build-infection/vendor/autoload.php"
 }
