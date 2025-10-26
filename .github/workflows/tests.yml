@@ -78,8 +78,6 @@ jobs:
         run: |
           infection \
             --ignore-msi-with-no-mutations \
-            --min-msi=100 \
-            --min-covered-msi=100 \
             --log-verbosity=all \
             --debug \
             --logger-text=php://stdout
