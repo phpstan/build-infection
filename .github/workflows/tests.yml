@@ -46,12 +46,9 @@ jobs:
         with:
           path: "build-infection"
 
-      - name: "Install PHP"
-        uses: "shivammathur/setup-php@v2"
+      - uses: ./build-infection/.github/actions/setup-php
         with:
-          coverage: "pcov"
           php-version: "8.3"
-          tools: "infection:0.31.7"
 
       - name: "Install build-infection dependencies"
         working-directory: "build-infection"
