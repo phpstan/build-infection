@@ -24,13 +24,13 @@ jobs:
       matrix:
         extension-name:
           - "phpstan-doctrine"
-          #- "phpstan-phpunit"
+          - "phpstan-phpunit"
           #- "phpstan-mockery"
           #- "phpstan-symfony"
           #- "phpstan-nette"
           #- "phpstan-webmozart-assert"
           #- "phpstan-beberlei-assert"
-          #- "phpstan-deprecation-rules"
+          - "phpstan-deprecation-rules"
           #- "phpstan-dibi"
           #- "phpstan-strict-rules"
           #- "phpstan-src"
