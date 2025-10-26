@@ -1,0 +1,21 @@
+name: 'Setup PHP with Infection'
+description: 'Setup PHP with Infection'
+inputs:
+  php-version:
+    description: 'PHP version'
+    required: true
+  php-extensions:
+    description: 'PHP extensions'
+    required: false
+    default: ''
+runs:
+  using: "composite"
+  steps:
+    - name: "Install PHP"
+      uses: "shivammathur/setup-php@v2"
+      with:
+        coverage: "pcov"
+        php-version: "${{ inputs.php-version }}"
+        ini-file: development
+        extensions: ${{ inputs.php-extensions }}
+        tools: infection:0.31.7
