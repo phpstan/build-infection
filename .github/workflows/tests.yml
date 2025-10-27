@@ -84,4 +84,4 @@ jobs:
         if: ${{ !cancelled() }}
         with:
           path: ./tmp
-          key: "result-cache-v1-${{ matrix.php-version }}-${{ github.run_id }}"
+          key: "result-cache-v1-${{ matrix.extension-name }}-${{ github.run_id }}"
