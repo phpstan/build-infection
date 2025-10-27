@@ -11,6 +11,12 @@ inputs:
 runs:
   using: "composite"
   steps:
+    - name: Get infection/infection version
+      id: infection_version
+      shell: bash
+      run: |
+        version=$(jq -r '.packages[] | select(.name == "infection/infection") | .version' ./build-infection/composer.lock)
+        echo "version=$version" >> "$GITHUB_OUTPUT"
     - name: "Install PHP"
       uses: "shivammathur/setup-php@v2"
       with:
@@ -18,4 +24,4 @@ runs:
         php-version: "${{ inputs.php-version }}"
         ini-file: development
         extensions: ${{ inputs.php-extensions }}
-        tools: infection:0.31.8
+        tools: infection:${{ steps.infection_version.outputs.version }}
