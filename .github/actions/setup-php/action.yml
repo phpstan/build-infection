@@ -18,4 +18,4 @@ runs:
         php-version: "${{ inputs.php-version }}"
         ini-file: development
         extensions: ${{ inputs.php-extensions }}
-        tools: infection:0.31.7
+        tools: infection:0.31.8
