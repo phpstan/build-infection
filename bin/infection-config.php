@@ -27,6 +27,6 @@ if ($timeout !== null) {
 	$decoded->timeout = (int) $timeout;
 }
 
-echo json_encode($decoded);
+echo json_encode($decoded, JSON_PRETTY_PRINT);
 
 exit(0);
