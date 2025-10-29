@@ -4,13 +4,14 @@
 error_reporting(E_ALL & ~E_DEPRECATED);
 ini_set('display_errors', 'stderr');
 
-$opts = getopt('', ['source-directory::', 'mutator-class::']);
+$opts = getopt('', ['source-directory::', 'mutator-class::', 'timeout::']);
 if ($argc < 1) {
-	echo "Usage: php ". $argv[0] ." [--source-directory='another/path'] [--mutator-class='Infection\Mutator\Removal\MethodCallRemoval]'\n";
+	echo "Usage: php ". $argv[0] ." [--source-directory='another/path'] [--mutator-class='Infection\Mutator\Removal\MethodCallRemoval] [--timeout=60]'\n";
 	exit(1);
 }
 $addSourceDirectories = (array) ($opts['source-directory'] ?? []);
 $addMutatorClasses = (array) ($opts['mutator-class'] ?? []);
+$timeout = $opts['timeout'] ?? null;
 
 $decoded = json_decode(file_get_contents(__DIR__.'/../resources/infection.json5'));
 foreach($addSourceDirectories as $path) {
@@ -18,6 +19,10 @@ foreach($addSourceDirectories as $path) {
 }
 foreach($addMutatorClasses as $mutatorclass) {
 	$decoded->mutators->$mutatorclass = true;
+}
+
+if ($timeout !== null) {
+	$decoded->timeout = $timeout;
 }
 
 echo json_encode($decoded);
