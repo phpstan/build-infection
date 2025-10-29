@@ -16,13 +16,13 @@ if ($defaults === false) {
 	throw new RuntimeException('Unable to read infection.json5');
 }
 $decoded = json_decode($defaults);
+
 foreach($addSourceDirectories as $path) {
 	$decoded->source->directories[] = $path;
 }
 foreach($addMutatorClasses as $mutatorclass) {
 	$decoded->mutators->$mutatorclass = true;
 }
-
 if ($timeout !== null) {
 	$decoded->timeout = (int) $timeout;
 }
