@@ -22,7 +22,7 @@ foreach($addMutatorClasses as $mutatorclass) {
 }
 
 if ($timeout !== null) {
-	$decoded->timeout = $timeout;
+	$decoded->timeout = (int) $timeout;
 }
 
 echo json_encode($decoded);

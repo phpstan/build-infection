@@ -1,17 +1,16 @@
 --TEST--
-infection-config.php renders proper json
+infection-config.php renders proper json defaults
 --FILE--
 <?php declare(strict_types=1);
 $bin = PHP_BINARY . ' '. __DIR__.'/../../bin/infection-config.php';
-echo shell_exec($bin." --source-directory='more/files/' --timeout=180 --mutator-class='My\Class' | jq");
+echo shell_exec($bin ."| jq");
 --EXPECT--
 {
   "$schema": "vendor/infection/infection/resources/schema.json",
-  "timeout": 180,
+  "timeout": 30,
   "source": {
     "directories": [
-      "src",
-      "more/files/"
+      "src"
     ]
   },
   "staticAnalysisTool": "phpstan",
@@ -20,8 +19,7 @@ echo shell_exec($bin." --source-directory='more/files/' --timeout=180 --mutator-
   },
   "mutators": {
     "@default": false,
-    "PHPStan\\Infection\\TrinaryLogicMutator": true,
-    "My\\Class": true
+    "PHPStan\\Infection\\TrinaryLogicMutator": true
   },
   "bootstrap": "build-infection/vendor/autoload.php"
 }
