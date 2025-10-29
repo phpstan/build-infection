@@ -1,5 +1,5 @@
 --TEST--
-The right events are emitted in the right order for a test that fails because of assert()
+infection-config.php renders proper json
 --FILE--
 <?php declare(strict_types=1);
 $bin = PHP_BINARY . ' '. __DIR__.'/../../bin/infection-config.php';
