@@ -8,7 +8,8 @@ tests:
 .PHONY: lint
 lint:
 	php vendor/bin/parallel-lint --colors \
-		--exclude tests/Rules/DeadCode/data/bug-383.php \
+		--exclude tests/phpt/infection-config-default.phpt \
+		--exclude tests/phpt/infection-config.phpt \
 		src tests
 
 .PHONY: cs-install
