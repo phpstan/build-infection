@@ -6,6 +6,7 @@ use Infection\Mutator\Definition;
 use Infection\Mutator\Mutator;
 use Infection\Mutator\MutatorCategory;
 use PhpParser\Node;
+use function count;
 use function in_array;
 
 /**
@@ -46,6 +47,10 @@ final class LooseBooleanMutator implements Mutator
 		}
 
 		if (!in_array($node->name->name, ['isTrue', 'isFalse'], true)) {
+			return false;
+		}
+
+		if (count($node->getArgs()) !== 0) {
 			return false;
 		}
 

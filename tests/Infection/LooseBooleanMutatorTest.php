@@ -71,6 +71,22 @@ final class LooseBooleanMutatorTest extends BaseMutatorTestCase
 				PHP
 ,
 		];
+
+		yield 'skip isTrue() with arguments' => [
+			<<<'PHP'
+				<?php
+				$a->isTrue($b, $c);
+				PHP
+,
+		];
+
+		yield 'skip isFalse() with arguments' => [
+			<<<'PHP'
+				<?php
+				$a->isFalse($b, $c);
+				PHP
+,
+		];
 	}
 
 	protected function getTestedMutatorClassName(): string
