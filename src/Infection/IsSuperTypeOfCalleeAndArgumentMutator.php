@@ -20,14 +20,14 @@ final class IsSuperTypeOfCalleeAndArgumentMutator implements Mutator
 	{
 		return new Definition(
 			<<<'TXT'
-				Replaces TrinaryLogic->yes() with !TrinaryLogic->no() and vice versa.
+				Replaces the callee and the argument of a isSuperTypeOf() method call.
 				TXT
 			,
 			MutatorCategory::ORTHOGONAL_REPLACEMENT,
 			null,
 			<<<'DIFF'
-				- $type->isBoolean()->yes();
-				+ !$type->isBoolean()->no();
+				- $a->isSuperTypeOf($b);
+				+ $b->isSuperTypeOf($a);
 			DIFF,
 		);
 	}
