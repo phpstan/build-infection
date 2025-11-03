@@ -8,6 +8,10 @@ inputs:
     description: 'PHP extensions'
     required: false
     default: ''
+  build-infection-path:
+    description: 'Path to build-infection'
+    require: false
+    default: './build-infection'
 runs:
   using: "composite"
   steps:
@@ -15,7 +19,7 @@ runs:
       id: infection_version
       shell: bash
       run: |
-        version=$(jq -r '.packages[] | select(.name == "infection/infection") | .version' ./build-infection/composer.lock)
+        version=$(jq -r '.packages[] | select(.name == "infection/infection") | .version' ${{ inputs.build-infection-path }}/composer.lock)
         echo "version=$version" >> "$GITHUB_OUTPUT"
     - name: "Install PHP"
       uses: "shivammathur/setup-php@v2"
