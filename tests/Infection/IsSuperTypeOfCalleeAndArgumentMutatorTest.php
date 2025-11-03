@@ -162,6 +162,7 @@ final class IsSuperTypeOfCalleeAndArgumentMutatorTest extends BaseMutatorTestCas
 		yield 'skip isSuperTypeOf with more arguments' => [
 			<<<'PHP'
 				<?php
+
 				$a->isSuperTypeOf($b, $c);
 				PHP
 ,
