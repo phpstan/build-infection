@@ -184,11 +184,8 @@ jobs:
             repo-result-cache-v1-${{ matrix.php-version }}-
 
       - name: "Run infection"
-        run: |
-          infection \
-            --ignore-msi-with-no-mutations \
-            --log-verbosity=all \
-            --logger-text=php://stdout
+        run: make infection
+
 
       - name: "Save result cache"
         uses: actions/cache/save@v4

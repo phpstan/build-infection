@@ -33,3 +33,7 @@ phpstan:
 .PHONY: phpstan-generate-baseline
 phpstan-generate-baseline:
 	php vendor/bin/phpstan analyse -c phpstan.neon -b phpstan-baseline.neon
+
+.PHONY: infection
+infection:
+	php vendor/bin/infection --ignore-msi-with-no-mutations --log-verbosity=all --logger-text=php://stdout
