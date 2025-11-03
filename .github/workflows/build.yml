@@ -147,3 +147,52 @@ jobs:
 
       - name: "PHPStan"
         run: "make phpstan"
+
+  mutation-tests:
+    name: "Mutation tests"
+    runs-on: "ubuntu-latest"
+    needs:
+      - tests
+      - static-analysis
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version:
+          - "8.2"
+          - "8.3"
+          - "8.4"
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v5
+
+      - uses: ./.github/actions/setup-php
+        with:
+          php-version: "${{ matrix.php-version }}"
+
+      - name: "Install dependencies"
+        run: "composer install --no-interaction --no-progress"
+
+      - name: "Restore result cache"
+        uses: actions/cache/restore@v4
+        with:
+          path: ./tmp
+          key: "repo-result-cache-v1-${{ matrix.php-version }}-${{ github.run_id }}"
+          restore-keys: |
+            repo-result-cache-v1-${{ matrix.php-version }}-
+
+      - name: "Run infection"
+        run: |
+          infection \
+            --ignore-msi-with-no-mutations \
+            --log-verbosity=all \
+            --debug \
+            --logger-text=php://stdout
+
+      - name: "Save result cache"
+        uses: actions/cache/save@v4
+        if: ${{ !cancelled() }}
+        with:
+          path: ./tmp
+          key: "repo-result-cache-v1-${{ matrix.php-version }}-${{ github.run_id }}"
