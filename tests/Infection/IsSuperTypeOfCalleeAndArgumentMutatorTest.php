@@ -167,6 +167,15 @@ final class IsSuperTypeOfCalleeAndArgumentMutatorTest extends BaseMutatorTestCas
 				PHP
 ,
 		];
+
+		yield 'skip other method calls' => [
+			<<<'PHP'
+				<?php
+
+				$a->isConstantValue($b);
+				PHP
+,
+		];
 	}
 
 	protected function getTestedMutatorClassName(): string
