@@ -36,4 +36,4 @@ phpstan-generate-baseline:
 
 .PHONY: infection
 infection:
-	php vendor/bin/infection --ignore-msi-with-no-mutations --log-verbosity=all --logger-text=php://stdout
+	php vendor/bin/infection --ignore-msi-with-no-mutations --logger-text=php://stdout
