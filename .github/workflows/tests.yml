@@ -33,7 +33,6 @@ jobs:
           - "phpstan-deprecation-rules"
           #- "phpstan-dibi"
           #- "phpstan-strict-rules"
-          #- "phpstan-src"
         fetch-depth:
           - 1
         script:
@@ -43,6 +42,18 @@ jobs:
             --log-verbosity=all \
             --debug \
             --logger-text=php://stdout
+        include:
+          - extension-name: "phpstan-src"
+            fetch-depth: 101
+            script: |
+              OLD_SHA=$(git rev-list HEAD --skip=100 -n 1)
+              infection \
+              --git-diff-base=$OLD_SHA \
+              --git-diff-lines \
+              --ignore-msi-with-no-mutations \
+              --log-verbosity=all \
+              --debug \
+              --logger-text=php://stdout
 
     steps:
       - name: "Checkout extension"
