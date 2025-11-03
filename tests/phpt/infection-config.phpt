@@ -20,6 +20,7 @@ echo shell_exec($bin." --source-directory='more/files/' --timeout=180 --mutator-
     },
     "mutators": {
         "@default": false,
+        "PHPStan\\Infection\\LooseBooleanMutator": true,
         "PHPStan\\Infection\\TrinaryLogicMutator": true,
         "My\\Class": true
     },
