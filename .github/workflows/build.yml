@@ -188,7 +188,6 @@ jobs:
           infection \
             --ignore-msi-with-no-mutations \
             --log-verbosity=all \
-            --debug \
             --logger-text=php://stdout
 
       - name: "Save result cache"
