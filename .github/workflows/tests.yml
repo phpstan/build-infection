@@ -34,12 +34,22 @@ jobs:
           #- "phpstan-dibi"
           #- "phpstan-strict-rules"
           #- "phpstan-src"
+        fetch-depth:
+          - 1
+        script:
+          - |
+            infection \
+            --ignore-msi-with-no-mutations \
+            --log-verbosity=all \
+            --debug \
+            --logger-text=php://stdout
 
     steps:
       - name: "Checkout extension"
         uses: actions/checkout@v5
         with:
           repository: "phpstan/${{ matrix.extension-name }}"
+          fetch-depth: ${{ matrix.fetch-depth }}
 
       - name: "Checkout build-infection"
         uses: actions/checkout@v5
@@ -72,12 +82,7 @@ jobs:
             result-cache-v1-${{ matrix.extension-name }}-
 
       - name: "Run infection"
-        run: |
-          infection \
-            --ignore-msi-with-no-mutations \
-            --log-verbosity=all \
-            --debug \
-            --logger-text=php://stdout
+        run: ${{ matrix.script }}
 
       - name: "Save result cache"
         uses: actions/cache/save@v4
