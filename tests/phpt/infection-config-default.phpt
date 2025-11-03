@@ -20,7 +20,8 @@ echo shell_exec($bin);
     "mutators": {
         "@default": false,
         "PHPStan\\Infection\\LooseBooleanMutator": true,
-        "PHPStan\\Infection\\TrinaryLogicMutator": true
+        "PHPStan\\Infection\\TrinaryLogicMutator": true,
+        "PHPStan\\Infection\\IsSuperTypeOfCalleeAndArgumentMutator": true
     },
     "bootstrap": "build-infection\/vendor\/autoload.php"
 }
