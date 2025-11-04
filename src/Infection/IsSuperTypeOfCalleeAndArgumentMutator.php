@@ -5,8 +5,8 @@ namespace PHPStan\Infection;
 use Infection\Mutator\Definition;
 use Infection\Mutator\Mutator;
 use Infection\Mutator\MutatorCategory;
+use LogicException;
 use PhpParser\Node;
-use RuntimeException;
 use function count;
 use function in_array;
 
@@ -83,7 +83,7 @@ final class IsSuperTypeOfCalleeAndArgumentMutator implements Mutator
 	{
 		$args = $node->getArgs();
 		if (count($args) !== 1) {
-			throw new RuntimeException();
+			throw new LogicException();
 		}
 
 		yield new Node\Expr\MethodCall(
