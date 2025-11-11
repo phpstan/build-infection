@@ -19,9 +19,10 @@ echo shell_exec($bin);
     },
     "mutators": {
         "@default": false,
+        "PHPStan\\Infection\\IsSuperTypeOfCalleeAndArgumentMutator": true,
         "PHPStan\\Infection\\LooseBooleanMutator": true,
         "PHPStan\\Infection\\TrinaryLogicMutator": true,
-        "PHPStan\\Infection\\IsSuperTypeOfCalleeAndArgumentMutator": true
+        "PHPStan\\Infection\\TrueTruthyFalseFalseyTypeSpecifierContextMutator": true
     },
     "bootstrap": "build-infection\/vendor\/autoload.php"
 }
