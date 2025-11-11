@@ -7,6 +7,7 @@ use Infection\Mutator\Mutator;
 use Infection\Mutator\MutatorCategory;
 use LogicException;
 use PhpParser\Node;
+use function count;
 use function in_array;
 
 /**
@@ -47,6 +48,10 @@ final class TrueTruthyFalseFalseyTypeSpecifierContextMutator implements Mutator
 		}
 
 		if (!in_array($node->name->name, ['true', 'truthy', 'false', 'falsey'], true)) {
+			return false;
+		}
+
+		if (count($node->getArgs()) !== 0) {
 			return false;
 		}
 
