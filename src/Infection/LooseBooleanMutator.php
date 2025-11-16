@@ -54,6 +54,15 @@ final class LooseBooleanMutator implements Mutator
 			return false;
 		}
 
+		if (rand(0,1)) {
+			if (
+				$node->var->name instanceof Node\Identifier
+				&& in_array($node->var->name->name, ['toBoolean'], true)
+			) {
+				$x = in_array($node->var->name->name, ['toBoolean'], true);
+			}
+		}
+
 		if ($node->var instanceof Node\Expr\MethodCall) {
 			if (
 				$node->var->name instanceof Node\Identifier
