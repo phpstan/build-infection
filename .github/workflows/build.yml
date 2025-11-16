@@ -180,7 +180,7 @@ jobs:
 
       - name: "Run infection"
         run: |
-          infection \
+          vendor/bin/infection \
             --ignore-msi-with-no-mutations \
             --log-verbosity=all \
             --debug \
