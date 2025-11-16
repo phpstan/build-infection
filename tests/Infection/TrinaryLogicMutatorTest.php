@@ -27,6 +27,7 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 		yield 'It mutates trinary yes' => [
 			<<<'PHP'
 				<?php
+
 				$trinary = \PHPStan\TrinaryLogic::createYes();
 				$trinary->yes();
 				PHP
@@ -43,6 +44,7 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 		yield 'It mutates trinary no' => [
 			<<<'PHP'
 				<?php
+
 				$trinary = \PHPStan\TrinaryLogic::createYes();
 				$trinary->no();
 				PHP
@@ -59,6 +61,7 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 		yield 'It skips maybe' => [
 			<<<'PHP'
 				<?php
+
 				$trinary = \PHPStan\TrinaryLogic::createYes();
 				$trinary->maybe();
 				PHP
@@ -68,6 +71,7 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 		yield 'It mutates IsSuperTypeOfResult yes' => [
 			<<<'PHP'
 				<?php
+
 				$trinary = \PHPStan\Type\IsSuperTypeOfResult::createYes();
 				$trinary->yes();
 				PHP
@@ -84,6 +88,7 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 		yield 'It does not double negate' => [
 			<<<'PHP'
 				<?php
+				
 				$trinary = \PHPStan\Type\IsSuperTypeOfResult::createYes();
 				!$trinary->yes();
 				PHP

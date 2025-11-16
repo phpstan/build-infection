@@ -27,6 +27,7 @@ final class TrueTruthyFalseFalseyTypeSpecifierContextMutatorTest extends BaseMut
 		yield 'It mutates true()' => [
 			<<<'PHP'
 				<?php
+
 				$context = TypeSpecifierContext::createNull();
 				$context->true();
 				PHP
@@ -43,6 +44,7 @@ final class TrueTruthyFalseFalseyTypeSpecifierContextMutatorTest extends BaseMut
 		yield 'It mutates truthy()' => [
 			<<<'PHP'
 				<?php
+
 				$context = TypeSpecifierContext::createNull();
 				$context->truthy();
 				PHP
@@ -59,6 +61,7 @@ final class TrueTruthyFalseFalseyTypeSpecifierContextMutatorTest extends BaseMut
 		yield 'It mutates false()' => [
 			<<<'PHP'
 				<?php
+
 				$context = TypeSpecifierContext::createNull();
 				$context->false();
 				PHP
@@ -75,6 +78,7 @@ final class TrueTruthyFalseFalseyTypeSpecifierContextMutatorTest extends BaseMut
 		yield 'It mutates falsey()' => [
 			<<<'PHP'
 				<?php
+
 				$context = TypeSpecifierContext::createNull();
 				$context->falsey();
 				PHP
@@ -91,6 +95,7 @@ final class TrueTruthyFalseFalseyTypeSpecifierContextMutatorTest extends BaseMut
 		yield 'It skips null()' => [
 			<<<'PHP'
 				<?php
+
 				$context = TypeSpecifierContext::createNull();
 				$context->null();
 				PHP
