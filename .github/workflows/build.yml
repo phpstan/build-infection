@@ -167,11 +167,6 @@ jobs:
       - name: "Checkout"
         uses: actions/checkout@v5
 
-      - uses: ./.github/actions/setup-php
-        with:
-          php-version: "${{ matrix.php-version }}"
-          build-infection-path: "./"
-
       - name: "Install dependencies"
         run: "composer install --no-interaction --no-progress"
 
