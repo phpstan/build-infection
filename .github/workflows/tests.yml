@@ -84,7 +84,7 @@ jobs:
           cat infection.json5 | jq
 
       - name: "Restore result cache"
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: ./tmp
           key: "result-cache-v1-${{ matrix.extension-name }}-${{ github.run_id }}"
@@ -95,7 +95,7 @@ jobs:
         run: ${{ matrix.script }}
 
       - name: "Save result cache"
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         if: ${{ !cancelled() }}
         with:
           path: ./tmp
