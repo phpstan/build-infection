@@ -10,7 +10,7 @@ inputs:
     default: ''
   build-infection-path:
     description: 'Path to build-infection'
-    require: false
+    required: false
     default: './build-infection'
 runs:
   using: "composite"
