@@ -22,7 +22,7 @@ runs:
         version=$(jq -r '.packages[] | select(.name == "infection/infection") | .version' ${{ inputs.build-infection-path }}/composer.lock)
         echo "version=$version" >> "$GITHUB_OUTPUT"
     - name: "Install PHP"
-      uses: "shivammathur/setup-php@v2"
+      uses: "shivammathur/setup-php@44454db4f0199b8b9685a5d763dc37cbf79108e1" # v2
       with:
         coverage: "pcov"
         php-version: "${{ inputs.php-version }}"
