@@ -55,14 +55,19 @@ jobs:
               --logger-text=php://stdout
 
     steps:
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@5ef0c079ce82195b2a36a210272d6b661572d83e # v2.14.2
+        with:
+          egress-policy: audit
+
       - name: "Checkout extension"
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           repository: "phpstan/${{ matrix.extension-name }}"
           fetch-depth: ${{ matrix.fetch-depth }}
 
       - name: "Checkout build-infection"
-        uses: actions/checkout@v6
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           path: "build-infection"
 
@@ -84,7 +89,7 @@ jobs:
           cat infection.json5 | jq
 
       - name: "Restore result cache"
-        uses: actions/cache/restore@v5
+        uses: actions/cache/restore@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
         with:
           path: ./tmp
           key: "result-cache-v1-${{ matrix.extension-name }}-${{ github.run_id }}"
@@ -95,7 +100,7 @@ jobs:
         run: ${{ matrix.script }}
 
       - name: "Save result cache"
-        uses: actions/cache/save@v5
+        uses: actions/cache/save@cdf6c1fa76f9f475f3d7449005a359c84ca0f306 # v5.0.3
         if: ${{ !cancelled() }}
         with:
           path: ./tmp
