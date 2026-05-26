@@ -2,12 +2,11 @@
 
 namespace PHPStan\Infection;
 
-use Infection\Testing\BaseMutatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(TrinaryLogicMutator::class)]
-final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
+final class TrinaryLogicMutatorTest extends MutatorTestCase
 {
 
 	/**
@@ -16,7 +15,7 @@ final class TrinaryLogicMutatorTest extends BaseMutatorTestCase
 	#[DataProvider('mutationsProvider')]
 	public function testMutator(string $input, $expected = []): void
 	{
-		$this->assertMutatesInput($input, $expected);
+		$this->assertMutatesMethodInput($input, $expected);
 	}
 
 	/**

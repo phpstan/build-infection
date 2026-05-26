@@ -2,12 +2,11 @@
 
 namespace PHPStan\Infection;
 
-use Infection\Testing\BaseMutatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(IsSuperTypeOfCalleeAndArgumentMutator::class)]
-final class IsSuperTypeOfCalleeAndArgumentMutatorTest extends BaseMutatorTestCase
+final class IsSuperTypeOfCalleeAndArgumentMutatorTest extends MutatorTestCase
 {
 
 	/**
@@ -16,7 +15,7 @@ final class IsSuperTypeOfCalleeAndArgumentMutatorTest extends BaseMutatorTestCas
 	#[DataProvider('mutationsProvider')]
 	public function testMutator(string $input, $expected = []): void
 	{
-		$this->assertMutatesInput($input, $expected);
+		$this->assertMutatesMethodInput($input, $expected);
 	}
 
 	/**
