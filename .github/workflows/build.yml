@@ -17,7 +17,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.2"
           - "8.3"
           - "8.4"
           - "8.5"
@@ -81,7 +80,7 @@ jobs:
         uses: "shivammathur/setup-php@7c071dfe9dc99bdf297fa79cb49ea005b9fcadbc" # v2.37.1
         with:
           coverage: "none"
-          php-version: "8.2"
+          php-version: "8.3"
           ini-file: development
 
       - name: "Validate Composer"
@@ -108,7 +107,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.2"
           - "8.3"
           - "8.4"
           - "8.5"
@@ -152,7 +150,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.2"
           - "8.3"
           - "8.4"
           - "8.5"
@@ -194,7 +191,6 @@ jobs:
       fail-fast: false
       matrix:
         php-version:
-          - "8.2"
           - "8.3"
           - "8.4"
 
