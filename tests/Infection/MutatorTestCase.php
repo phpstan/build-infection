@@ -21,9 +21,9 @@ abstract class MutatorTestCase extends BaseMutatorTestCase
 		$this->assertMutatesInput(
 			$this->wrapInMethod($input),
 			array_map(
-                $this->wrapInMethod(...),
-                (array) $expected,
-            ),
+				$this->wrapInMethod(...),
+				(array) $expected,
+			),
 		);
 	}
 
@@ -53,9 +53,9 @@ abstract class MutatorTestCase extends BaseMutatorTestCase
 
 	private function stripOpeningTag(string $code): string
 	{
-        return str_starts_with($code, '<?php')
-            ? (preg_replace('/^\s*\R?/', '', substr($code, 5)) ?? '')
-            : $code;
+		return str_starts_with($code, '<?php')
+			? (preg_replace('/^\s*\R?/', '', substr($code, 5)) ?? '')
+			: $code;
 	}
 
 }
