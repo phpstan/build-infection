@@ -2,12 +2,11 @@
 
 namespace PHPStan\Infection;
 
-use Infection\Testing\BaseMutatorTestCase;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 
 #[CoversClass(NonFalseyNonEmptyStringMutator::class)]
-final class NonFalseyNonEmptyStringMutatorTest extends BaseMutatorTestCase
+final class NonFalseyNonEmptyStringMutatorTest extends MutatorTestCase
 {
 
 	/**
@@ -16,7 +15,7 @@ final class NonFalseyNonEmptyStringMutatorTest extends BaseMutatorTestCase
 	#[DataProvider('mutationsProvider')]
 	public function testMutator(string $input, $expected = []): void
 	{
-		$this->assertMutatesInput($input, $expected);
+		$this->assertMutatesMethodInput($input, $expected);
 	}
 
 	/**
