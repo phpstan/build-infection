@@ -4,9 +4,7 @@ namespace PHPStan\Infection;
 
 use Infection\Testing\BaseMutatorTestCase;
 use function array_map;
-use function method_exists;
 use function preg_replace;
-use function sprintf;
 use function str_starts_with;
 use function substr;
 
