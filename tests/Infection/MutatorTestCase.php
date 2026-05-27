@@ -31,24 +31,7 @@ abstract class MutatorTestCase extends BaseMutatorTestCase
 	{
 		$code = $this->stripOpeningTag($code);
 
-		if (method_exists(BaseMutatorTestCase::class, 'wrapCodeInMethod')) {
-			return BaseMutatorTestCase::wrapCodeInMethod($code);
-		}
-
-		$indentedCode = preg_replace('/^/m', '        ', $code);
-
-		return sprintf(
-			<<<'PHP'
-				<?php
-
-				class WrappingClass {
-				    public function wrappedTestedCode() {
-				%s
-				    }
-				}
-				PHP,
-			$indentedCode,
-		);
+		return BaseMutatorTestCase::wrapCodeInMethod($code);
 	}
 
 	private function stripOpeningTag(string $code): string
