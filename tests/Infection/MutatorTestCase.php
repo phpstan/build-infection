@@ -4,9 +4,7 @@ namespace PHPStan\Infection;
 
 use Infection\Testing\BaseMutatorTestCase;
 use function array_map;
-use function method_exists;
 use function preg_replace;
-use function sprintf;
 use function str_starts_with;
 use function substr;
 
@@ -31,24 +29,7 @@ abstract class MutatorTestCase extends BaseMutatorTestCase
 	{
 		$code = $this->stripOpeningTag($code);
 
-		if (method_exists(BaseMutatorTestCase::class, 'wrapCodeInMethod')) {
-			return BaseMutatorTestCase::wrapCodeInMethod($code);
-		}
-
-		$indentedCode = preg_replace('/^/m', '        ', $code);
-
-		return sprintf(
-			<<<'PHP'
-				<?php
-
-				class WrappingClass {
-				    public function wrappedTestedCode() {
-				%s
-				    }
-				}
-				PHP,
-			$indentedCode,
-		);
+		return BaseMutatorTestCase::wrapCodeInMethod($code);
 	}
 
 	private function stripOpeningTag(string $code): string
